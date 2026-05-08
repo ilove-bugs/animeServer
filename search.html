@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Animes</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      
+      #animation {
+       margin: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 1.5em;
+        color: brown;
+        animation: typing 4s steps(40) 3s forwards infinite;
+     letter-spacing: 2px;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+        
+      }
+           form {
+            margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        border: 1px solid lightgrey;
+        padding: 10px;
+        box-shadow: 2px 4px 5px lightgrey;
+        width: 80%;
+        height: 500px;
+        justify-content: center;
+      } 
+      input {
+        width: 60%;
+        padding: 7px;
+        border-radius: 5px;
+        border: 1px solid grey;
+        letter-spacing: 1px;
+      }
+      button {
+        padding: 4px;
+        width: 45%;
+        background: brown;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid grey;
+        letter-spacing: 1px;
+      }
+      button:hover{
+        background-color: rgb(114, 14, 14);
+      }
+      #output li{
+        font-size: 17px;
+        padding: 5px;
+        letter-spacing: 2px;
+      border-left: 4px solid darkgreen;
+      }
+      b{
+        color: brown;
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <header id="animation">Search Your Favourite Animes</header>
+
+    <form method="get">
+      <input type="text" name="anime" id="name" placeholder="Anime name" />
+      <button type="submit">Fetch</button>
+    </form>
+
+    <a href="http://localhost:3000/post">post data to server</a>
+
+    <ol id="output">
+
+    </p>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const value = document.getElementById("name").value;
+        data(value);
+      });
+
+      async function data(value) {
+        const output = document.getElementById("output");
+
+          const resp = await fetch(
+           `/animelist?anime=${value}`
+          );
+          const data = await resp.json();
+console.log(data)
+          data.forEach(el => {
+            const li = document.createElement("li");
+
+            li.innerHTML += `<br>
+  Title:<b> ${el.title}</b><br>
+    Author: <b> ${el.author}</b><br>
+   Rating: <b> ${el.rating}</b>
+  `;
+  output.appendChild(li)
+          });
+      
+  
+      }
+    </script>
+  </body>
+</html>

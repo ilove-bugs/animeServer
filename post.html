@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Anime-data</title>
+    <style>
+      * {
+        font-family: sans-serif;
+        padding: 0;
+        margin: 0;
+      }
+      body{
+        background: url("wallpaperflare.com_wallpaper(3).jpg");
+      
+        background-position: center;
+      background-repeat: no-repeat;
+   
+      background-size: cover;
+ 
+height: 100vh;
+      }
+     
+      header {
+        font-size: 2em;
+        text-align: center;
+        color: brown;
+        letter-spacing: 5px;
+        margin: 5px;
+        font-weight: bold;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid lightgrey;
+        margin: auto;
+   height: 400px;
+        padding: 10px;
+
+  background-color: white;
+        width: 80%;
+        max-width: 600px;
+        z-index: -2;
+      }
+      input {
+        width: 60%;
+        padding: 7px;
+        border-radius: 5px;
+        border: 1px solid grey;
+        letter-spacing: 1px;
+     
+      }
+      button {
+        padding: 4px;
+        width: 40%;
+        background: brown;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid grey;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form method="post">
+        <header>Post anime</header>
+        <input
+          type="text"
+          name="animetitle"
+          id="animename"
+          placeholder="Anime title"
+          required
+        />
+        <input
+          type="text"
+          name="animeauthor"
+          id="animeauthor"
+          placeholder="Anime author"
+        />
+        <input
+          type="number"
+          name="rating"
+          id="rating"
+          placeholder="Rating"
+          required
+        />
+
+        <button type="submit" title="Send">Send</button>
+      </form>
+    </main>
+    <script>
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault()
+        const animedata = {
+          animetitle: document.getElementById("animename").value,
+          animeauthor: document.getElementById("animeauthor").value,
+          rating: document.getElementById("rating").value,
+        };
+        const response = await fetch("/post", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(animedata),
+        });
+        alert("Successfully sent to server..")
+      });
+    </script>
+  </body>
+</html>
