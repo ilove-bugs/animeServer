@@ -22,7 +22,7 @@ router.post("/post", async (req, res) => {
   };
 
   await animes.insertOne(newanime);
-  res.status(201);
+  res.status(201).send("Successfully created...");
 
 });
 router.get("/", (req, res) => {
