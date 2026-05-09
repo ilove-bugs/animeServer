@@ -18,12 +18,12 @@ router.post("/post", async (req, res) => {
   const newanime = {
     title: animetitle,
     author: animeauthor,
-    rating: rating,
+    rating: rating
   };
 
   await animes.insertOne(newanime);
-
   res.status(201);
+
 });
 router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "search.html"));
