@@ -19,6 +19,8 @@ async function display() {
   // await animes.updateMany({title: "Berserk"}, { $unset:{ rank: 1} });
   // console.log(await animes.find({ title: "Berserk" }));
 
+  await animes.deleteMany({title: "Apples & Oranges"})
+
 }
 
 connect();

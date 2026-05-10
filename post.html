@@ -11,7 +11,7 @@
         margin: 0;
       }
       body{
-        background: url("wallpaperflare.com_wallpaper(3).jpg");
+        background: url("wallpaperflare.com_wallpaper(4).jpg");
       
         background-position: center;
       background-repeat: no-repeat;
@@ -24,10 +24,11 @@ height: 100vh;
       header {
         font-size: 2em;
         text-align: center;
-        color: brown;
-        letter-spacing: 5px;
-        margin: 5px;
-        font-weight: bold;
+   color: black;
+        letter-spacing:2px;
+        margin: 2px;
+        
+        text-transform: uppercase;
       }
       form {
         display: flex;
@@ -35,32 +36,43 @@ height: 100vh;
         gap: 20px;
         align-items: center;
         justify-content: center;
-        border: 1px solid lightgrey;
+
         margin: auto;
    height: 400px;
         padding: 10px;
 
-  background-color: white;
-        width: 80%;
+ 
+        width: 75%;
         max-width: 600px;
         z-index: -2;
+
+        background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(3px); /* Blurs only what is behind this box */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2rem;
+  border-radius: 10px;
       }
       input {
         width: 60%;
         padding: 7px;
         border-radius: 5px;
-        border: 1px solid grey;
-        letter-spacing: 1px;
-     
+        border: 1px solid black;
+     font-weight: bold;
+     background-color: transparent;
+     color: black;
       }
       button {
-        padding: 4px;
-        width: 40%;
-        background: brown;
-        color: white;
+        font-weight: bold;
+        padding: 8px;
+        width: 25%;
+        background: transparent;
+        color: black;
         border-radius: 5px;
-        border: 1px solid grey;
+        border: 1px solid black;
         letter-spacing: 1px;
+      }
+      button:hover{
+        background-color: #00A36C;
       }
     </style>
   </head>
@@ -87,6 +99,9 @@ height: 100vh;
           id="rating"
           placeholder="Rating"
           required
+          step="0.01"
+          max="9.99"
+        
         />
 
         <button type="submit" title="Send">Send</button>
